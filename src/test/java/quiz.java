@@ -20,12 +20,11 @@ public class quiz {
         WebDriver driver = new ChromeDriver();
         driver.get("https://demoqa.com/login");
         driver.manage().window().maximize();
-        driver.findElement(By.id("UserName"));
-        WebElement username=driver.findElement(By.id("UserName"));
-        driver.findElement(By.id("password"));
+        WebElement username=driver.findElement(By.id("userName"));
         WebElement password=driver.findElement(By.id("password"));
         username.sendKeys("test123");
         password.sendKeys("Automation@123");
+        WebElement login= driver.findElement(By.id("login" ));
         login.click();
 
        
