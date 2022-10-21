@@ -37,13 +37,12 @@ public class quiz {
         WebElement bookTitle = driver.findElement(By.xpath("//*[@id=\"see-book-Git Pocket Guide\"]/a"));
         Assert.assertEquals(bookTitle.getText(),"Git Pocket Guide");
         bookTitle.click();        
-      
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[2]/div[2]/div[9]/div[2]/button"))).click();
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        String text = alert.getText();
-        Assert.assertEquals(text, "Book already present in the your collection!");
-        alert.accept();
-       
+        
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent());
+        Alert bookAlert = driver.switchTo().alert();
+        Assert.assertEquals(bookAlert.getText(), "Book already present in the your collection!");
+
+             
         WebElement logOut = driver.findElement(By.id("submit"));
         logOut.click();
         WebElement welcomeText = driver.findElement(By.xpath("//*[@id=\"userForm\"]/div[1]/h2"));
